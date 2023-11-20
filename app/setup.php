@@ -3,10 +3,7 @@
 /**
  * Theme setup.
  */
-
 namespace App;
-
-use function Roots\bundle;
 
 /**
  * Register the theme assets.
@@ -14,16 +11,8 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    bundle('app')->enqueue();
-}, 100);
-
-/**
- * Register the theme assets with the block editor.
- *
- * @return void
- */
-add_action('enqueue_block_editor_assets', function () {
-    bundle('editor')->enqueue();
+    wp_enqueue_script('sage/app.js', asset_path('scripts/app.js'), ['sage/vendor.js'], null, true);
+    wp_enqueue_style('sage/app.css', asset_path('styles/app.css'), false, null);
 }, 100);
 
 /**
